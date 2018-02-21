@@ -1,0 +1,28 @@
+2018-02-15 08:49:46 WARN  TerminalConsulta:22 - Iniciando a aplicação
+2018-02-15 08:49:50 ERROR TerminalConsulta:43 - Código de produto não existente
+2018-02-15 08:49:50 DEBUG TerminalConsulta:50 - Usuário escolheu o produto de código 401
+2018-02-15 08:49:51 ERROR TerminalConsulta:43 - Código de produto não existente
+2018-02-15 08:49:51 WARN  TerminalConsulta:63 - Finalizando a aplicação
+2018-02-15 08:50:37 WARN  TerminalConsulta:22 - Iniciando a aplicação
+2018-02-15 08:50:45 ERROR TerminalConsulta:43 - Código de produto não existente
+2018-02-15 08:50:45 DEBUG TerminalConsulta:50 - Usuário escolheu o produto de código 401
+2018-02-15 08:51:51 WARN  TerminalConsulta:22 - Iniciando a aplicação
+2018-02-15 08:51:54 ERROR TerminalConsulta:48 - Código de produto não existente
+2018-02-15 08:51:54 DEBUG TerminalConsulta:50 - Usuário escolheu o produto de código 401
+2018-02-15 08:53:47 WARN  TerminalConsulta:22 - Iniciando a aplicação
+2018-02-15 08:53:50 ERROR TerminalConsulta:48 - Código de produto não existente
+2018-02-15 08:53:50 DEBUG TerminalConsulta:50 - Usuário escolheu o produto de código 401
+2018-02-15 08:59:01 WARN  TerminalConsulta:22 - Iniciando a aplicação
+2018-02-15 09:00:35 WARN  TerminalConsulta:22 - Iniciando a aplicação
+2018-02-15 09:00:35 INFO  TerminalConsulta:33 - Recuperando dados usuários
+2018-02-15 09:00:38 DEBUG TerminalConsulta:51 - Usuário escolheu o produto de código 401
+2018-02-15 09:00:39 INFO  TerminalConsulta:46 - Usuário desligando o sistema
+2018-02-15 09:00:39 WARN  TerminalConsulta:65 - Finalizando a aplicação
+2018-02-15 09:02:39 WARN  TerminalConsulta:22 - Iniciando a aplicação
+2018-02-15 09:02:39 INFO  TerminalConsulta:33 - Recuperando dados usuários
+2018-02-15 09:02:47 DEBUG TerminalConsulta:51 - Usuário escolheu o produto de código 401
+2018-02-15 09:02:47 INFO  TerminalConsulta:54 - Produto encontrado
+2018-02-15 09:02:48 DEBUG TerminalConsulta:51 - Usuário escolheu o produto de código 20
+2018-02-15 09:02:48 INFO  TerminalConsulta:54 - Produto encontrado
+2018-02-15 09:02:49 INFO  TerminalConsulta:46 - Usuário desligando o sistema
+2018-02-15 09:02:49 WARN  TerminalConsulta:66 - Finalizando a aplicação
