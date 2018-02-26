@@ -4,3 +4,7 @@
 2018-02-15 08:36:54 DEBUG ConversaoMetricaBO:12 - Convertendo km para milhas
 2018-02-15 08:36:54 INFO  ConversaoMetricaBO:17 - Convertendo cm para polegadas
 2018-02-15 08:36:54 WARN  Teste:20 - Finalizando a aplicação
+2018-02-22 07:51:36 DEBUG Teste:13 - Iniciando a aplicação
+2018-02-22 07:51:36 DEBUG ConversaoMetricaBO:12 - Convertendo km para milhas
+2018-02-22 07:51:36 INFO  ConversaoMetricaBO:17 - Convertendo cm para polegadas
+2018-02-22 07:51:36 WARN  Teste:20 - Finalizando a aplicação
