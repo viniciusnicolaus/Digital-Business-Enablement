@@ -4,6 +4,9 @@ import org.apache.axis2.AxisFault;
 
 public class FiapBO {
 	
+	public FiapBO() {
+		
+	}
 	public float calcularMedia(float nac, float am, float ps) {
 		return nac*0.2f + am*0.3f + ps*0.5f;
 	}

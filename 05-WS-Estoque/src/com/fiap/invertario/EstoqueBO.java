@@ -1,5 +1,8 @@
 package com.fiap.invertario;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.axis2.AxisFault;
 
 import com.fiap.ws.to.ProdutoTO;
@@ -35,5 +38,12 @@ public class EstoqueBO {
 	
 		}
 		return to;	
+	}
+	public List<ProdutoTO> listar(){
+		List<ProdutoTO> lista = new ArrayList<>();
+		lista.add(new ProdutoTO(401, "Camiseta Feminina", 15, 200));
+		lista.add(new ProdutoTO(402, "Camiseta Masculina", 5, 150));
+		
+		return lista;
 	}
 }
