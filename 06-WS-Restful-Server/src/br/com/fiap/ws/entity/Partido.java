@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="T_PARTIDO")
-@SequenceGenerator(name="patido", sequenceName="SQ_T_PARTIDO",allocationSize=1)
+@SequenceGenerator(name="partido", sequenceName="SQ_T_PARTIDO",allocationSize=1)
 public class Partido {
 
 	@Id

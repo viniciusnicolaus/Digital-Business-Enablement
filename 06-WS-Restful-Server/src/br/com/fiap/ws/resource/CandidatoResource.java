@@ -30,6 +30,7 @@ public class CandidatoResource {
 
 	private CandidatoDAO dao;
 
+	//Inicializa o dao no construtor
 	public CandidatoResource() {
 		EntityManager em = 
 				EntityManagerFactorySingleton.getInstance().createEntityManager();
@@ -49,6 +50,7 @@ public class CandidatoResource {
 	public List<Candidato> listar(){
 		return dao.listar();
 	}
+	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response cadastrar(Candidato candidato,
