@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>#{candidatoBean.candidato.codigo == 0?"Cadastro":"Edição
+		"}de Candidato</title>
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputScript library="js" name="jquery-3.3.1.min.js" />
+	<h:outputScript library="js" name="bootstrap.min.js" />
+</h:head>
+<h:body>
+	<div class="container">
+		<h1>#{candidatoBean.candidato.codigo == 0?"Cadastro":"Edição "}de
+			Candidato</h1>
+		<h:form>
+			<h:inputHidden value="#{candidatoBean.candidato.codigo}" />
+			<div class="form-group">
+				<h:outputLabel value="Nome: " for="nome" />
+				<h:inputText styleClass="form-control" value="#{candidatoBean.candidato.nome}" />
+			</div>
+			<div class="form-group">
+				<h:outputLabel value="Apelido: " for="apelido" />
+				<h:inputText styleClass="form-control" value="#{candidatoBean.candidato.apelido}" />
+			</div>
+			<div class="form-group">
+				<h:selectBooleanCheckbox id="ficha"
+					value="#{candidatoBean.candidato.fichaLimpa}" />
+				<h:outputLabel value="Ficha Limpa" for="ficha" />
+			</div>
+			<div class="form-group">
+				<h:outputLabel value="Número: " for="numero" />
+				<h:inputText value="#{candidatoBean.candidato.numero}" styleClass="form-control" />
+			</div>
+			<h:commandButton styleClass="btn btn-success" action="#{candidatoBean.salvar}" value="Salvar" />
+			
+			<h:messages infoClass="alert-success"
+						errorClass="alert alert-danger"/>
+		</h:form>
+	</div>
+</h:body>
+
+</html>
