@@ -19,74 +19,67 @@ import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 
-import br.com.fiap.ws.dao.CandidatoDAO;
-import br.com.fiap.ws.dao.impl.CandidatoDAOImpl;
-import br.com.fiap.ws.entity.Candidato;
-import br.com.fiap.ws.exception.CommitException;
+import br.com.fiap.ws.dao.NoticiaDAO;
+import br.com.fiap.ws.dao.impl.NoticiaDAOImpl;
+import br.com.fiap.ws.entity.Noticia;
 import br.com.fiap.ws.singleton.EntityManagerFactorySingleton;
 
-@Path("/candidato")
-public class CandidatoResource {
-
-	private CandidatoDAO dao;
-
-	//Inicializa o dao no construtor
-	public CandidatoResource() {
+@Path("/noticia")
+public class NoticiaResource {
+	
+	private NoticiaDAO dao;
+	
+	public NoticiaResource() {
 		EntityManager em = 
 				EntityManagerFactorySingleton.getInstance().createEntityManager();
-
-		dao = new CandidatoDAOImpl(em); 
+		dao = new NoticiaDAOImpl(em);
 	}
-
+	
 	@GET
 	@Path("{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Candidato buscar(@PathParam("id") int codigo) {
+	public Noticia buscar(@PathParam("id") int codigo) {
 		return dao.buscar(codigo);
-	}
-
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Candidato> listar(){
-		return dao.listar();
 	}
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response cadastrar(Candidato candidato,
-			@Context UriInfo uri) { //Pra criar o link a URL atual
-
+	public Response cadastrar(Noticia noticia, @Context UriInfo uri) {
 		try {
-			dao.cadastrar(candidato);
+			dao.cadastrar(noticia);
 			dao.commit();
 			UriBuilder b = uri.getAbsolutePathBuilder();
-			b.path(String.valueOf(candidato.getCodigo()));
-			//Cria resposta 201 created
+			b.path(String.valueOf(noticia.getCodigo()));
 			return Response.created(b.build()).build();
-		} catch (CommitException e) {
+		} catch (Exception e) {
 			return Response.serverError().build();
 		}	
 	}
-
+	
 	@PUT
 	@Path("{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response atualizar(Candidato candidato, @PathParam("id") int codigo){
-		
+	public Response atualizar(@PathParam("id") int codigo, Noticia noticia) {
 		try {
-			candidato.setCodigo(codigo);
-			dao.atualizar(candidato);
+			noticia.setCodigo(codigo);
+			dao.atualizar(noticia);
 			dao.commit();
-			return Response.ok().build();
 		} catch (Exception e) {
 			return Response.serverError().build();
 		}
+		return Response.ok().build();
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Noticia> listar(){
+		return dao.listar();
 	}
 	
 	@DELETE
 	@Path("{codigo}")
-	public void remover(@PathParam("codigo") int codigo) {
-		try {
+	public void deletar(@PathParam("codigo") int codigo) {
+		try {		
 			dao.excluir(codigo);
 			dao.commit();
 		} catch (Exception e) {
@@ -94,4 +87,5 @@ public class CandidatoResource {
 			throw new WebApplicationException(Status.INTERNAL_SERVER_ERROR);
 		}
 	}
+	
 }

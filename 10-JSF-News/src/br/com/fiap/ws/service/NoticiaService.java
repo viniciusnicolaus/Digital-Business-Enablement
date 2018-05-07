@@ -1,6 +1,4 @@
-package br.com.fiap.service;
-
-import java.util.Arrays;
+package br.com.fiap.ws.service;import java.util.Arrays;
 import java.util.List;
 
 import javax.ws.rs.core.MediaType;
@@ -9,66 +7,64 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 
-import br.com.fiap.to.PartidoTO;
+import br.com.fiap.ws.to.NoticiaTO;
 
-public class PartidoService {
-	
-	private static String URL = "http://localhost:8080/06-WS-Restful-Server/rest/partido";
+public class NoticiaService {
+
+	private static String URL = "http://localhost:8081/09-WS-Restful-Server-News/rest/noticia";
 	private Client client = Client.create();
 
-	public void cadastrar(PartidoTO partido) throws Exception  {
-		WebResource resource = 
-				client.resource(URL);
-		ClientResponse response = resource 		
-				.type(MediaType.APPLICATION_JSON)
-				.post(ClientResponse.class, partido);
-		
-		if (response.getStatus() != 201) {
-			throw new Exception("Erro: " + response.getStatus());
-		}
-	}
-	
-	public PartidoTO buscar(int codigo) throws Exception {
-		WebResource resource = client.resource(URL).path(String.valueOf(codigo));
-		
-		ClientResponse response = resource
-				.type(MediaType.APPLICATION_JSON)
-				.get(ClientResponse.class);
-		if(response.getStatus() != 200) {
-			throw new Exception("Erro " + response.getStatus());
-		}
-		return response.getEntity(PartidoTO.class);
-	}
-	
-	public List<PartidoTO> listar() throws Exception {
+	public void cadastrar(NoticiaTO noticia) throws Exception {
 		WebResource resource = client.resource(URL);
-		ClientResponse response = 
-				resource
+
+		ClientResponse response = resource
+				.type(MediaType.APPLICATION_JSON)
+				.post(ClientResponse.class, noticia);
+		if(response.getStatus() != 201) {
+			throw new Exception("Erro " + response.getStatus());
+		}
+	}
+
+	public NoticiaTO buscar(int codigo) throws Exception {
+		WebResource resource = client.resource(URL).path(String.valueOf(codigo));
+
+		ClientResponse response = resource
 				.type(MediaType.APPLICATION_JSON)
 				.get(ClientResponse.class);
 		if(response.getStatus() != 200) {
 			throw new Exception("Erro " + response.getStatus());
 		}
-	
-		return Arrays.asList(response.getEntity(PartidoTO[].class));
+
+		return response.getEntity(NoticiaTO.class);
 	}
-	
-	public void atualizar(PartidoTO partido) throws Exception {
-		WebResource resource = client.resource(URL)
-				.path(String.valueOf(partido.getCodigo()));
-		
+
+	public List<NoticiaTO> listar() throws Exception{
+		WebResource resource = client.resource(URL);
+
 		ClientResponse response = resource
 				.type(MediaType.APPLICATION_JSON)
-				.put(ClientResponse.class, partido);
+				.get(ClientResponse.class);
 		if(response.getStatus() != 200) {
 			throw new Exception("Erro " + response.getStatus());
 		}
+
+		return Arrays.asList(response.getEntity(NoticiaTO[].class));
+	}
+	
+	public void atualizar(NoticiaTO noticia) throws Exception {
+		WebResource resource = client.resource(URL).path(String.valueOf(noticia.getCodigo()));
 		
+		ClientResponse response = resource
+				.type(MediaType.APPLICATION_JSON)
+				.put(ClientResponse.class, noticia);
+		
+		if(response.getStatus() != 200) {
+			throw new Exception("Erro " + response.getStatus());
+		}
 	}
 	
 	public void deletar(int codigo) throws Exception {
-		WebResource resource = client.resource(URL)
-				.path(String.valueOf(codigo));
+		WebResource resource = client.resource(URL).path(String.valueOf(codigo));
 		
 		ClientResponse response = resource.delete(ClientResponse.class);
 		
@@ -76,4 +72,7 @@ public class PartidoService {
 			throw new Exception("Erro " + response.getStatus());
 		}
 	}
+	
+	
+
 }

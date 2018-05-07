@@ -5,15 +5,14 @@
 	xmlns:f="http://java.sun.com/jsf/core">
 
 <h:head>
-	<title>#{candidatoBean.candidato.codigo == 0?"Cadastro":"Edição
-		"}de Candidato</title>
+	<title>#{candidatoBean.candidato.codigo == 0?"Cadastro":"Edição "} de Candidato</title>
 	<h:outputStylesheet library="css" name="bootstrap.min.css" />
 	<h:outputScript library="js" name="jquery-3.3.1.min.js" />
 	<h:outputScript library="js" name="bootstrap.min.js" />
 </h:head>
 <h:body>
 	<div class="container">
-		<h1>#{candidatoBean.candidato.codigo == 0?"Cadastro":"Edição "}de
+		<h1>#{candidatoBean.candidato.codigo == 0?"Cadastro":"Edição "} de
 			Candidato</h1>
 		<h:form>
 			<h:inputHidden value="#{candidatoBean.candidato.codigo}" />
@@ -41,5 +40,4 @@
 		</h:form>
 	</div>
 </h:body>
-
 </html>
