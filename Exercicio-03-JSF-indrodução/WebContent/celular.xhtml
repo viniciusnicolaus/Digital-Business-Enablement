@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Celulares 2018</title>
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputScript library="js" name="jquery-3.3.1.min.js" />
+	<h:outputScript library="js" name="bootstrap.min.js" />
+</h:head>
+<h:body>
+	<div class="container">
+	<h1>Cadastro Celulares</h1>
+		<h:form>
+			<h:inputHidden value="#{celularBean.celular.codigo}" />
+			<div class="form-group">
+				<h:outputLabel value="Descrição:" for="descricao" />
+				<h:inputText styleClass="form-control" value="#{celularBean.celular.marca}" />
+			</div>
+
+			<div class="form-group">
+				<h:selectBooleanCheckbox id="lancamento"
+					value="#{celularBean.celular.lancadoEsseAno}" />
+				<h:outputLabel value="Lançado esse ano" for="lancamento" />
+			</div>
+
+			<h:commandButton styleClass="btn btn-success" action="#{celularBean.salvar}" value="Cadastrar" />
+
+			<h:messages infoClass="alert-success"
+						errorClass="alert alert danger"/>
+			
+		</h:form>
+	</div>
+</h:body>
+</html>
