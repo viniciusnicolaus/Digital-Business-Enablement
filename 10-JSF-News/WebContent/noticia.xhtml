@@ -6,23 +6,25 @@
 
 <ui:composition template="/_template.xhtml">
 	<ui:define name="content">
-		
-		<div class="container">
-			<h1 style="text-align: center;">Cadastro Notícia</h1>
+	<f:loadBundle basename="br.com.fiap.jsf.bundle.noticia" var="n"/>
+	
+			<div class="container">
+			<h1 style="text-align: center;">#{n.title}</h1>
 			<h:form>
 
 				<div class="form-group">
-					<h:outputLabel value="Título: " for="titulo" />
+					<h:outputLabel value="#{n.lbl_title}" for="titulo" />
 					<h:inputText styleClass="form-control" id="titulo"
 						required="true"
 						value="#{noticiaBean.noticia.titulo}">
 						<f:validateLength minimum="5" maximum="50"/>
+						<f:validator validatorId="pontoFinal"/>
 					</h:inputText>
 					<h:message for="titulo" styleClass="text-danger"/>
 				</div>
 
 				<div class="form-group">
-					<h:outputLabel value="Data: " for="data" />
+					<h:outputLabel value="#{n.lbl_date}" for="data" />
 					<h:inputText styleClass="form-control" id="data"
 						value="#{noticiaBean.noticia.data.time}">
 						<f:convertDateTime pattern="dd/MM/yyyy" />
@@ -31,14 +33,15 @@
 				</div>
 
 				<div class="form-group">
-					<h:outputLabel value="Publicado: " for="publicado" />
+					<h:outputLabel value="#{n.lbl_published}" for="publicado" />
 					<h:selectBooleanCheckbox style="margin:10px;" id="publicado"
 						value="#{noticiaBean.noticia.publicado}" />
 				</div>
 
 				<div class="form-group">
-					<h:outputLabel value="Conteúdo: " for="conteudo" />
-					<h:inputText styleClass="form-control" id="conteudo"
+					<h:outputLabel value="#{n.lbl_content}" for="conteudo" />
+					<h:inputTextarea validator="#{noticiaBean.validarConteudo}" 
+					styleClass="form-control" id="conteudo"
 						value="#{noticiaBean.noticia.conteudo}" />
 				</div>
 
@@ -46,7 +49,7 @@
 					errorClass="alert alert-danger" />
 
 				<h:commandButton styleClass="mr-2 btn btn-success"
-					action="#{noticiaBean.salvar}" value="Cadastrar" />
+					action="#{noticiaBean.salvar}" value="#{n.btn_save}" />
 				<h:link styleClass="btn btn-dark" outcome="lista-noticias"> Lista de Notícias</h:link>
 
 			</h:form>

@@ -6,7 +6,9 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 
 import br.com.fiap.ws.service.NoticiaService;
 import br.com.fiap.ws.to.NoticiaTO;
@@ -24,6 +26,16 @@ public class NoticiaBean {
 		service = new NoticiaService();
 	}
 
+	//Validação customizada do counteúdo
+	public void validarConteudo(FacesContext context, UIComponent component, Object value) {
+		//Recupera o valor do campo
+		String conteudo = value.toString();
+		if(!(conteudo.contains(" ") && conteudo.length() < 50)) {
+			throw new ValidatorException(new FacesMessage("Conteúdo " + 
+						"deve conter mais de uma palavra e menos de 50 caracteres"));
+		}
+	}
+	
 	public NoticiaTO getNoticia() {
 		return noticia;
 	}

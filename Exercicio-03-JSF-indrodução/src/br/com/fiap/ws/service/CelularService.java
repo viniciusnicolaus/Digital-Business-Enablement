@@ -13,7 +13,7 @@ import br.com.fiap.ws.entity.CelularTO;
 
 public class CelularService {
 	
-	private static String URL = "http://localhost:8081/Exercicio-01-Web-Services-Restful-Server/rest/celular"; 
+	private static final String URL = "http://localhost:8081/Exercicio-01-Web-Services-Restful-Server/rest/celular"; 
 	public Client client = Client.create();
 	
 	public void cadastrar(CelularTO cel) throws Exception {
