@@ -84,4 +84,11 @@ public class FilmeResource {
 	public List<Filme> listar(){
 		return dao.listar();
 	}
+	
+	@GET
+	@PathParam("{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Filme buscar(@PathParam("id") int codigo) {
+		return dao.buscar(codigo);
+	}
 }

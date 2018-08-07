@@ -12,17 +12,13 @@ import br.com.fiap.ws.service.FilmeService;
 
 @ManagedBean
 public class FilmeBean {
-
 	private FilmeService service;
-	
 	private Filme filme;
 	
 	//Método de inicialização
 	@PostConstruct
 	private void init() {
-		service = new FilmeService();
-		setFilme(new Filme());
-				
+		service = new FilmeService();		
 	}
 
 	//Método para o clique do botão
